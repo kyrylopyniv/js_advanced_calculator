@@ -35,7 +35,34 @@
  * @return {object}
  */
 function makeCalculator() {
-  // write code here
+  const advCalculator = {
+    result: 0,
+    reset: function() {
+      this.result = 0;
+
+      return this;
+    },
+    operate: function(callback, param) { // виклик колбеку і передача параметру
+      this.result = callback(param, this.result);
+      // передаєм як параметр сам result
+
+      return this;
+    },
+    multiply: function(a, b) { // методи-колбеки
+      return a * b;
+    },
+    add: function(a, b) {
+      return a + b;
+    },
+    subtract: function(a, b) {
+      return b - a;
+    },
+    divide: function(a, b) {
+      return b / a;
+    },
+  };
+
+  return advCalculator;
 }
 
 module.exports = makeCalculator;
